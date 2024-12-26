@@ -1,0 +1,41 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Serve Drafts",
+            "type": "shell",
+            "command": "hugo server -D",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "isBackground": true,
+            "problemMatcher": []
+        },
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "hugo",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": []
+        },
+        {
+			"label": "New Post",
+			"type": "shell",
+			"command": "title=\"${input:title}\" && slug=\"${title// /-}\" && hugo new content/post/${title}",
+			"problemMatcher": []
+		}
+    ],
+    "inputs": [
+		{
+			"id": "title",
+			"description": "Enter the title of the new post, in this format YYYYMMDD-Title with no spaces",
+			"type": "promptString"
+		}
+	]
+}
